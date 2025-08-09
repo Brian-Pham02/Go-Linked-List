@@ -165,21 +165,22 @@ func (ll *LinkedList[T]) GetTail() T {
 }
 
 // Removes the head node
-func (ll *LinkedList[T]) RemoveHead() T {
+func (ll *LinkedList[T]) RemoveHead() (T, error) {
 	f := ll.head
 	if f == nil {
-		panic("No such element found")
+		var zero T
+		return zero, errors.New("NoSuchElementFoundException")
 	}
-	return ll.unlinkHead(f)
+	return ll.unlinkHead(f), nil
 }
 
 // Removes the tail node
-func (ll *LinkedList[T]) RemoveTail() T {
+func (ll *LinkedList[T]) RemoveTail() (T, error) {
 	l := ll.tail
 	if l == nil {
 		panic("No such element found")
 	}
-	return ll.unlinkTail(l)
+	return ll.unlinkTail(l), nil
 }
 
 // Adds a node at the head
@@ -413,7 +414,7 @@ func (ll *LinkedList[T]) Push(x T) {
 }
 
 // Get the node data at the top of the linked list and remove it
-func (ll *LinkedList[T]) Pop() T {
+func (ll *LinkedList[T]) Pop() (T, error) {
 	return ll.RemoveHead()
 }
 
