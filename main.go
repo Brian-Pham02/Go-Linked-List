@@ -134,24 +134,33 @@ func (ll *LinkedList[T]) unlink(x *Node[T]) T {
 	return elem
 }
 
-// Get the head node data
-func (ll *LinkedList[T]) GetHead() T {
+// Get the head node
+func (ll *LinkedList[T]) GetHeadNode() *Node[T] {
 	f := ll.head
 	if f == nil {
 		panic("No such element found")
 	}
-
-	return f.data
+	return f
 }
 
-// Get the tail node data
-func (ll *LinkedList[T]) GetTail() T {
+// Get the head node data
+func (ll *LinkedList[T]) GetHead() T {
+	return ll.GetHeadNode().data
+}
+
+// Get the tail node
+func (ll *LinkedList[T]) GetTailNode() *Node[T] {
 	l := ll.tail
 	if l == nil {
 		panic("No such element found")
 	}
 
-	return l.data
+	return l
+}
+
+// Get the tail node data
+func (ll *LinkedList[T]) GetTail() T {
+	return ll.GetTailNode().data
 }
 
 // Removes the head node
