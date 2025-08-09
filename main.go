@@ -431,6 +431,10 @@ func (ll *LinkedList[T]) RemoveLastOccurence(o T) bool {
 	return false
 }
 
+func (ll *LinkedList[T]) ModCount() int {
+	return ll.modCount
+}
+
 func (ll *LinkedList[T]) String() string {
 	var sb strings.Builder
 	sb.WriteString("[")
