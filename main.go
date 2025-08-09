@@ -348,6 +348,7 @@ func (ll *LinkedList[T]) Peek() (T, error) {
 		var zero T
 		return zero, errors.New("EmptyStackException")
 	}
+
 	return f.data, nil
 }
 
