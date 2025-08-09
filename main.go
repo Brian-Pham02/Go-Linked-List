@@ -1,6 +1,7 @@
 package golinkedlist
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 )
@@ -339,23 +340,24 @@ func (ll *LinkedList[T]) LastIndex(o T) int {
 }
 
 // Get the node data at the top of the linked list
-func (ll *LinkedList[T]) Peek() T {
+func (ll *LinkedList[T]) Peek() (T, error) {
 	f := ll.head
+
 	if f == nil {
 		var zero T
-		return zero
+		return zero, errors.New("EmptyStackException")
 	}
-	return f.data
+	return f.data, nil
 }
 
 // Get the node data at the top of the linked list and remove it
-func (ll *LinkedList[T]) Poll() T {
+func (ll *LinkedList[T]) Poll() (T, error) {
 	f := ll.head
 	if f == nil {
 		var zero T
-		return zero
+		return zero, errors.New("EmptyStackException")
 	}
-	return ll.unlinkHead(f)
+	return ll.unlinkHead(f), nil
 }
 
 // Add a new node data to the tail end of the linked list
@@ -376,33 +378,33 @@ func (ll *LinkedList[T]) OfferTail(x T) bool {
 }
 
 // Get the node data at the top of the linked list
-func (ll *LinkedList[T]) PeekHead() T {
+func (ll *LinkedList[T]) PeekHead() (T, error) {
 	return ll.Peek()
 }
 
 // Get the node data at the end of the linked list
-func (ll *LinkedList[T]) PeekTail() T {
+func (ll *LinkedList[T]) PeekTail() (T, error) {
 	f := ll.tail
 	if f == nil {
 		var zero T
-		return zero
+		return zero, errors.New("EmptyStackException")
 	}
-	return f.data
+	return f.data, nil
 }
 
 // Get the node data at the top of the linked list and remove it
-func (ll *LinkedList[T]) PollHead() T {
+func (ll *LinkedList[T]) PollHead() (T, error) {
 	return ll.Poll()
 }
 
 // Get the node data at the end of the linked list and remove it
-func (ll *LinkedList[T]) PollTail() T {
+func (ll *LinkedList[T]) PollTail() (T, error) {
 	f := ll.tail
 	if f == nil {
 		var zero T
-		return zero
+		return zero, errors.New("EmptyStackException")
 	}
-	return ll.unlinkTail(f)
+	return ll.unlinkTail(f), nil
 }
 
 // Appends a new node data at the head of the linked list
