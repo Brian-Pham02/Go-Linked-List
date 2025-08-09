@@ -20,3 +20,18 @@ func NewNode[T comparable](prev *Node[T], elem T, next *Node[T]) *Node[T] {
 		next: next,
 	}
 }
+
+// Get the node data
+func (n *Node[T]) Data() T {
+	return n.data
+}
+
+// Get the prev node
+func (n *Node[T]) Prev() *Node[T] {
+	return n.prev
+}
+
+// Get the next node
+func (n *Node[T]) Next() *Node[T] {
+	return n.next
+}
