@@ -1,4 +1,4 @@
-package main
+package golinkedlist
 
 /*
 Defines the node of the LinkedList structure
